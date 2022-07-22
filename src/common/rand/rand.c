@@ -7,7 +7,7 @@
 #define strcasecmp _stricmp
 #else
 #include <unistd.h>
-#include <strings.h>
+#include <string.h>
 #if defined(__APPLE__)
 #include <TargetConditionals.h>
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
