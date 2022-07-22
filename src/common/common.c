@@ -239,7 +239,8 @@ void *OQS_MEM_aligned_alloc(size_t alignment, size_t size) {
 	}
 	return ptr;
 #else // musl, maybe others.
-	return aligned_alloc(alignment, size);
+	//return aligned_alloc(alignment, size);
+	return OQS_MEM_aligned_alloc(alignment, size);
 #endif
 }
 
