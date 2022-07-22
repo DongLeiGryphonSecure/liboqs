@@ -6,7 +6,8 @@
 
 #include <string.h>
 
-int crypto_kem_keypair(unsigned char* pk, unsigned char* sk)
+//int crypto_kem_keypair(unsigned char* pk, unsigned char* sk)
+OQS_STATUS crypto_kem_keypair(unsigned char* pk, unsigned char* sk)
 { // FrodoKEM's key generation
   // Outputs: public key pk (               BYTES_SEED_A + (PARAMS_LOGQ*PARAMS_N*PARAMS_NBAR)/8 bytes)
   //          secret key sk (CRYPTO_BYTES + BYTES_SEED_A + (PARAMS_LOGQ*PARAMS_N*PARAMS_NBAR)/8 + 2*PARAMS_N*PARAMS_NBAR + BYTES_PKHASH bytes)
@@ -63,7 +64,8 @@ int crypto_kem_keypair(unsigned char* pk, unsigned char* sk)
 }
 
 
-int crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsigned char *pk)
+//int crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsigned char *pk)
+OQS_STATUS crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsigned char *pk)
 { // FrodoKEM's key encapsulation
     const uint8_t *pk_seedA = &pk[0];
     const uint8_t *pk_b = &pk[BYTES_SEED_A];
@@ -132,7 +134,8 @@ int crypto_kem_enc(unsigned char *ct, unsigned char *ss, const unsigned char *pk
 }
 
 
-int crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const unsigned char *sk)
+//int crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const unsigned char *sk)
+OQS_STATUS crypto_kem_dec(unsigned char *ss, const unsigned char *ct, const unsigned char *sk)
 { // FrodoKEM's key decapsulation
     uint16_t B[PARAMS_N*PARAMS_NBAR] = {0};
     uint16_t Bp[PARAMS_N*PARAMS_NBAR] = {0};
