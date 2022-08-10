@@ -81,7 +81,9 @@ elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "s390x")
     endif()
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "ARC")
     set(ARCH "ARC")
-    
+    set(OQS_ENABLE_KEM_SIKE OFF)
+    set(OQS_ENABLE_KEM_SIDH OFF)
+   
 elseif(OQS_PERMIT_UNSUPPORTED_ARCHITECTURE)
     message(WARNING "Unknown or unsupported processor: " ${CMAKE_SYSTEM_PROCESSOR})
     message(WARNING "Compilation on an unsupported processor should only be used for testing, as it may result an insecure configuration, for example due to variable-time instructions leaking secret information.")

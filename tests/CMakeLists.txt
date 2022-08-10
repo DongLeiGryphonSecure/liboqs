@@ -22,7 +22,11 @@ if(WIN32 AND NOT (MINGW OR MSYS OR CYGWIN))
 endif()
 
 if(NOT WIN32)
-    set(LIBM m)
+    if(ARCH STREQUAL "ARC")
+        set(LIBM )
+    else()
+        set(LIBM m)
+    endif()
 
     if(OQS_USE_OPENSSL)
         include_directories(${OPENSSL_INCLUDE_DIR})
