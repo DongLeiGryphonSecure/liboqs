@@ -142,7 +142,10 @@ elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
             add_compile_options(-Wl,--gc-sections)
         endif ()
     endif()
-
+elseif(CMAKE_C_COMPILER_ID STREQUAL "CCAC")
+    add_compile_options(@${CMAKE_HOME_DIRECTORY}/platform/arc/emsk/ccac.arg)
+#    add_link_options(${CMAKE_HOME_DIRECTORY}/platform/arc/emsk/arc_core.ld)
+    set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_HOME_DIRECTORY}/platform/arc/emsk/arc_core.ld")
 elseif(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
     # Warning C4146 is raised when a unary minus operator is applied to an
     # unsigned type; this has nonetheless been standard and portable for as

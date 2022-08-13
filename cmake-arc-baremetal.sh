@@ -3,14 +3,13 @@
 SRC_DIR=$(dirname $(realpath $0))
 if [ $SRC_DIR = $(pwd) ]; then echo "this should be run in build dir"; exit 1; fi
 
-#ARC_ROOT=/cyg/opt/ARC/MetaWare/arc
 #ARC_ROOT=/cygdriver/ARC/MetaWare/arc
 ARC_ROOT=/opt/ARC/MetaWare/arc
 ARC_TOOLCHAIN_CMAKE=${ARC_ROOT}/cmake/arc-mwdt.toolchain.cmake
-ARC_TCF=${ARC_ROOT}/tcf/em4_ecc.tcf
+#ARC_TCF=${ARC_ROOT}/tcf/em4_ecc.tcf
 
 CMAKE_DEFS=" -DCMAKE_TOOLCHAIN_FILE=${ARC_TOOLCHAIN_CMAKE}"
-CMAKE_DEFS="${CMAKE_DEFS} -DARC_CFG_TCF_PATH=${ARC_TCF}"
+#CMAKE_DEFS="${CMAKE_DEFS} -DARC_CFG_TCF_PATH=${ARC_TCF}"
 CMAKE_DEFS="${CMAKE_DEFS} -DOQS_ENABLE_KEM_SIKE=OFF -DOQS_ENABLE_KEM_SIDH=OFF"
 CMAKE_DEFS="${CMAKE_DEFS} -DOQS_PERMIT_UNSUPPORTED_ARCHITECTURE=ON"
 CMAKE_DEFS="${CMAKE_DEFS} -DOQS_USE_OPENSSL=OFF"

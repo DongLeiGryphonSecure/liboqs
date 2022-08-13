@@ -118,6 +118,23 @@ int gettimeofday(struct timeval *tp, struct timezone *tzp) {
 	tp->tv_usec = (long) (system_time.wMilliseconds * 1000);
 	return 0;
 }
+#elif defined(__arc__)
+#pragma message ( "gettimeofday() for __arc__" )
+int gettimeofday(struct timeval *tv, void *tz)
+{
+#define CLK_PER_SEC 1
+  time_t t;
+  (void)time(&t); /* provided by hostlink */
+#if (CLK_PER_SEC > 1)
+  tv->tv_sec = t / CLK_PER_SEC;
+  tv->tv_usec = ((t % CLK_PER_SEC) * 1000) / CLK_PER_SEC;
+  tv->tv_usec *= 1000;
+#else
+  tv->tv_sec = t;
+  tv->tv_usec = 0;
+#endif
+  return 0; /* success */
+}
 #endif
 
 static uint64_t _bench_rdtsc(void) {
